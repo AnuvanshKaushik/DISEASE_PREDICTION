@@ -450,6 +450,11 @@ def main():
             """
         )
 
+if st.button("Clear Cache"):
+    st.cache_data.clear()
+    st.cache_resource.clear()
+    st.experimental_rerun()
+
 
 if __name__ == "__main__":
     main()
