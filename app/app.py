@@ -12,7 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 # Paths (edit if your files differ)
 # -------------------------------
 BASE_DIR = Path(__file__).resolve().parent
-DRIVE_DATA_URL = "https://drive.google.com/uc?export=download&id=1zZDM-2IKRNmewMt1rY58m86WpvbD1EYk"
+DRIVE_DATA_URL = "https://drive.google.com/file/d/1zZDM-2IKRNmewMt1rY58m86WpvbD1EYk/view?usp=sharing"
 DESC_PATH = BASE_DIR / "data" / "Description.csv"
 MODEL_PATH = BASE_DIR / "models" / "optimized_disease_prediction_model.h5"
 
