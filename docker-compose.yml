@@ -1,0 +1,11 @@
+services:
+  app:
+    image: disease-pred-app
+    build: .
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+    volumes:
+      - ./app/data:/app/app/data
+      - ./app/models:/app/app/models
+
