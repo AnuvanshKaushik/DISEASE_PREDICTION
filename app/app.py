@@ -12,7 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 # Paths (edit if your files differ)
 # -------------------------------
 BASE_DIR = Path(__file__).resolve().parent
-DATA_PATH = BASE_DIR / "data" / "Final_Augmented_dataset_Diseases_and_Symptoms.csv"
+DRIVE_DATA_URL = "https://drive.google.com/uc?export=download&id=1zZDM-2IKRNmewMt1rY58m86WpvbD1EYk"
 DESC_PATH = BASE_DIR / "data" / "Description.csv"
 MODEL_PATH = BASE_DIR / "models" / "optimized_disease_prediction_model.h5"
 
@@ -22,10 +22,11 @@ MODEL_PATH = BASE_DIR / "models" / "optimized_disease_prediction_model.h5"
 # -------------------------------
 @st.cache_data(show_spinner=False)
 def load_dataset() -> Tuple[pd.DataFrame, List[str], LabelEncoder]:
-    if not DATA_PATH.exists():
-        raise FileNotFoundError(f"Dataset missing at {DATA_PATH}")
+    try:
+        df = pd.read_csv(DRIVE_DATA_URL)
+    except Exception as e:
+        raise RuntimeError(f"Failed loading dataset from Google Drive: {e}")
 
-    df = pd.read_csv(DATA_PATH)
     if "diseases" not in df.columns:
         raise ValueError("Dataset must contain a 'diseases' column.")
 
